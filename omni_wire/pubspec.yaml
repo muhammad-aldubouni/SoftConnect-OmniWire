@@ -1,0 +1,29 @@
+name: omni_wire
+description: "A new Flutter project."
+publish_to: 'none'
+version: 0.1.0+1
+
+environment:
+  sdk: ^3.12.2
+
+dependencies:
+  get_it:
+  state_shell:
+    git:
+      url: "https://github.com/muhammad-aldubouni/state_shell.git"
+  # softconnect_utilities:
+  #   git:
+  #     url: "https://github.com/muhammad-aldubouni/softconnect_utilities.git"
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  google_fonts: ^8.2.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true

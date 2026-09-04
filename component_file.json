@@ -1,0 +1,77 @@
+{
+	"component_name": "servo",
+	"libraries": [],
+	"includes": [
+		"#include<ESP32Servo>"
+	],
+	"globals": [
+		{
+			"name": "Servo_<id> Object Setup",
+			"code": [
+				"Servo servo_<id>;"
+			],
+			"selections": []
+		}
+	],
+	"setup": {
+		"name": "Setup Servo_<id>",
+		"code": [
+			"servo_<id>.attach($set1_<id>);"
+		],
+		"selections": [
+			{
+				"name": "Attach Pin",
+				"replace": "$set1_<id>",
+				"input_type": "range",
+				"range": "selection",
+				"items": [
+					[
+						"1",
+						"safe to use"
+					],
+					[
+						"2",
+						"safe to use"
+					]
+				],
+				"value": ""
+			}
+		]
+	},
+	"actions": [
+		{
+			"name": "Rotate servo_<id>",
+			"code": [
+				"servo_<id>.write($act1_<id>);"
+			],
+			"selections": [
+				{
+					"name": "Rotation Angle",
+					"replace": "$act1_<id>",
+					"input_type": "range",
+					"range": "0:360",
+					"items": [],
+					"value": ""
+				}
+			]
+		}
+	],
+	"triggers": [
+		{
+			"name": "If Servo_<id> Rotation Angle is",
+			"code": [
+				"if(servo_<id>.read() == $trg1_<id>){\n\t<code_block>\n}"
+			],
+			"selections": [
+				{
+					"name": "Rotation Angle",
+					"replace": "$trg1_<id>",
+					"input_type": "range",
+					"range": "0:360",
+					"items": [],
+					"value": ""
+				}
+			]
+		}
+	]
+}
