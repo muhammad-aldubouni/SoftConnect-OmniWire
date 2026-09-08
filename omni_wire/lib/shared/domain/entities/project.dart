@@ -8,7 +8,7 @@ class Project {
   final List<Component> components;
   final List<Workflow> workflows;
   final List<CodeBlock> controls;
-  final List<String> sections;
+  final List<List<CodeBlock>> sections;
 
   Project({
     required this.name,

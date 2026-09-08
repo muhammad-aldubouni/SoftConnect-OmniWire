@@ -1,6 +1,6 @@
 import 'package:omni_wire/features/ide_shell/data/data_sources/project_data_source.dart';
 import 'package:omni_wire/features/ide_shell/data/models/project_model.dart';
-import 'package:omni_wire/features/ide_shell/domain/entries/project.dart';
+import 'package:omni_wire/shared/domain/entities/project.dart';
 import 'package:omni_wire/features/ide_shell/domain/repositories/project_repo.dart';
 
 class ProjectRepoImp implements ProjectRepo {

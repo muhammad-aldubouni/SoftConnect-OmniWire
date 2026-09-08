@@ -8,7 +8,7 @@ class ComponentsDatasourceImp implements ComponentsDatasource {
   Future<List<Map<String, dynamic>>> fetchComponents() async {
     List<Map<String, dynamic>> components = [];
     var file = File(
-      "/home/muhammad/Documents/SoftConnect-OmniWire-desgin-docs/component_file.json",
+      "/home/muhammad/Documents/SoftConnect-OmniWire/component_file.json",
     );
     components.add(jsonDecode(file.readAsStringSync()) as Map<String, dynamic>);
     return components;

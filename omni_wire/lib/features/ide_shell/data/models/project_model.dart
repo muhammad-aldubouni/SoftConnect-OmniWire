@@ -1,7 +1,8 @@
 import 'package:omni_wire/features/embedded_code_builder/data/models/code_block_model.dart';
 import 'package:omni_wire/features/embedded_code_builder/data/models/component_model.dart';
 import 'package:omni_wire/features/embedded_code_builder/data/models/workflow_model.dart';
-import 'package:omni_wire/features/ide_shell/domain/entries/project.dart';
+import 'package:omni_wire/shared/domain/entities/project.dart';
+import 'package:omni_wire/shared/domain/entities/code_block.dart';
 
 class ProjectModel {
   final String name;
@@ -9,7 +10,7 @@ class ProjectModel {
   final List<ComponentModel> components;
   final List<WorkflowModel> workflows;
   final List<CodeBlockModel> controls;
-  final List<String> sections;
+  final List<List<CodeBlockModel>> sections;
 
   ProjectModel({
     required this.name,
@@ -45,8 +46,12 @@ class ProjectModel {
             .toList() ??
         [],
     sections:
-        (json['sections'] as List<dynamic>?)
-            ?.map((item) => item as String)
+        (json['sections'] as List<List<dynamic>>?)
+            ?.map(
+              (section) => section
+                  .map((codeBlock) => CodeBlockModel.fromJson(codeBlock))
+                  .toList(),
+            )
             .toList() ??
         [],
   );
@@ -63,7 +68,12 @@ class ProjectModel {
     controls: project.controls
         .map((control) => CodeBlockModel.fromEntity(control))
         .toList(),
-    sections: List<String>.from(project.sections),
+    sections: List<List<CodeBlockModel>>.from(
+      project.sections.map(
+        (section) =>
+            section.map((codeBlock) => CodeBlockModel.fromEntity(codeBlock)),
+      ),
+    ),
   );
 
   Map<String, dynamic> toJson() => {
@@ -72,7 +82,12 @@ class ProjectModel {
     'components': components.map((component) => component.toJson()).toList(),
     'workflows': workflows.map((workflow) => workflow.toJson()).toList(),
     'controls': controls.map((control) => control.toJson()).toList(),
-    'sections': sections,
+    'sections': sections
+        .map(
+          (section) =>
+              section.map((codeBlockModel) => codeBlockModel.toJson()).toList(),
+        )
+        .toList(),
   };
 
   Project toEntity() => Project(
@@ -81,6 +96,14 @@ class ProjectModel {
     components: components.map((component) => component.toEntity()).toList(),
     workflows: workflows.map((workflow) => workflow.toEntity()).toList(),
     controls: controls.map((control) => control.toEntity()).toList(),
-    sections: sections,
+    sections: List<List<CodeBlock>>.from(
+      sections
+          .map(
+            (section) => section
+                .map((codeBlockModel) => codeBlockModel.toEntity())
+                .toList(),
+          )
+          .toList(),
+    ),
   );
 }

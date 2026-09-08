@@ -89,11 +89,9 @@ Widget workflowCanvas(EmbeddedCodeBuilderViewmodel vm) {
                                         top: Radius.circular(20),
                                       ),
                                     ),
-                                    child: Wrap(
+                                    child: Row(
                                       spacing: 12,
-                                      runSpacing: 8,
-                                      crossAxisAlignment:
-                                          WrapCrossAlignment.center,
+
                                       children: [
                                         Container(
                                           width: 32,
@@ -119,13 +117,14 @@ Widget workflowCanvas(EmbeddedCodeBuilderViewmodel vm) {
                                           ),
                                         ),
                                         Text(
-                                          "workflow name",
+                                          vm.workflows.data[idx].name,
                                           style: GoogleFonts.jetBrainsMono(
                                             fontSize: 16,
                                             fontWeight: FontWeight.bold,
                                             color: EnterpriseColors.textBright,
                                           ),
                                         ),
+                                        const Spacer(),
                                         Button(
                                           label: "Add Action",
                                           onPressed: () {},
@@ -175,7 +174,7 @@ Widget workflowCanvas(EmbeddedCodeBuilderViewmodel vm) {
                                                     BoxShadow(
                                                       color: EnterpriseColors
                                                           .selected,
-                                                      blurRadius: 10,
+                                                      blurRadius: 5,
                                                       //offset: Offset(2, -2),
                                                       blurStyle: .solid,
                                                     ),

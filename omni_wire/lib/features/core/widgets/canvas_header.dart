@@ -19,7 +19,7 @@ Widget buildCanvasHeader(IdeShellViewmodel vm) {
       borderRadius: BorderRadius.circular(20),
       color: EnterpriseColors.surface,
     ),
-    padding: const EdgeInsets.symmetric(horizontal: 10),
+    padding: const EdgeInsets.symmetric(horizontal: 20),
     child: Row(
       children: [
         Expanded(
@@ -43,6 +43,7 @@ Widget buildCanvasHeader(IdeShellViewmodel vm) {
                       vm.tabsState.data[0],
                       vm.viewEmbeddedCodeBuilder,
                     ),
+
                     _buildTabBtn(
                       'App Builder',
                       Icons.construction,
@@ -89,7 +90,7 @@ Widget buildCanvasHeader(IdeShellViewmodel vm) {
         ElevatedButton.icon(
           style: ElevatedButton.styleFrom(
             backgroundColor: EnterpriseColors.operatorAnd,
-            foregroundColor: Colors.white,
+            // foregroundColor: EnterpriseColors.textPrimary,
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
           ),
           onPressed: () {},
@@ -125,18 +126,16 @@ Widget _buildTabBtn(
                 ),
                 decoration: BoxDecoration(
                   color: active
-                      ? EnterpriseColors.buttonColor
+                      ? EnterpriseColors.selected
                       : Colors.transparent,
-                  borderRadius: BorderRadius.circular(4),
+                  borderRadius: BorderRadius.circular(10),
                 ),
                 child: Row(
                   children: [
                     Icon(
                       icon,
                       size: 18,
-                      color: active
-                          ? EnterpriseColors.textBright
-                          : EnterpriseColors.textMuted,
+                      color: active ? Colors.white : EnterpriseColors.textMuted,
                     ),
                     const SizedBox(width: 6),
                     Text(
@@ -144,7 +143,7 @@ Widget _buildTabBtn(
                       style: GoogleFonts.jetBrainsMono(
                         fontSize: 11,
                         color: active
-                            ? EnterpriseColors.textBright
+                            ? Colors.white
                             : EnterpriseColors.textMuted,
                         fontWeight: FontWeight.w900,
                       ),
@@ -156,7 +155,7 @@ Widget _buildTabBtn(
               .animateWhere(
                 condition: active,
                 animation: ((animate) => animate.scaleXY(
-                  duration: .1.milliseconds,
+                  duration: 100.milliseconds,
                   begin: 1,
                   end: 1.05,
                 )),

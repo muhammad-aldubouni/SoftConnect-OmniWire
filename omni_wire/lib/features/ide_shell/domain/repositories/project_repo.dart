@@ -1,4 +1,4 @@
-import 'package:omni_wire/features/ide_shell/domain/entries/project.dart';
+import 'package:omni_wire/shared/domain/entities/project.dart';
 
 abstract class ProjectRepo {
   Project loadProject(String projectPath);
