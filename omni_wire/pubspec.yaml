@@ -8,6 +8,9 @@ environment:
 
 dependencies:
   get_it:
+  encrypt:
+  archive:
+  crypto:
   state_shell:
     git:
       url: "https://github.com/muhammad-aldubouni/state_shell.git"

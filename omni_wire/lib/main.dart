@@ -1,3 +1,3 @@
-import 'package:omni_wire/features/core/app.dart';
+import 'package:omni_wire/core/app.dart';
 
 void main() => startApp();
