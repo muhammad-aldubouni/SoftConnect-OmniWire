@@ -23,7 +23,7 @@ class EmbeddedCodeBuilderViewmodel {
       addedComponents.update((value) => [...value, comp.getCopy("")]);
 
   Future<void> init() async {
-    await Future.delayed(.5.seconds);
+    await Future.delayed(.5.seconds); // for making thinks clear for user
     components.data = await getComponentUsecase();
     components.notifyChange();
     isReady.update((data) => true);

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 abstract class EnterpriseColors {
   /// Set to `true` for dark mode, `false` for deep, high-separation light mode.
-  static bool isDark = false;
+  static bool isDark = true;
 
   // Base Surfaces (Muted steel-gray depth hierarchy)
   static Color get bg => isDark
